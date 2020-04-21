@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hw_8</title>
+</head>
+<body>
+
+<textarea id="text_1"></textarea>
+
+<form>
+    <input class="task_2" name="name" placeholder="ім'я">
+    <br>
+    <input class="task_2" name="surname" placeholder="прізвище">
+    <br>
+    <textarea class="task_2" name="text" placeholder="Якийсь текст" rows="10" cols="60"></textarea>
+    <br>
+
+    <p>Мови програмування:</p>
+    <input class="task_2" type="checkbox" name="java" id="check_1">
+    <label for="check_1">Java</label>
+
+    <input class="task_2" type="checkbox" name="js" id="check_2">
+    <label for="check_2">JS</label>
+
+    <input class="task_2" type="checkbox" name="Python" id="check_3">
+    <label for="check_3">Python</label>
+
+    <input class="task_2" type="checkbox" name="C++" id="check_4">
+    <label for="check_4">C++</label>
+    <br>
+
+    <p> Вже відсвяткував(ла):
+        <input class="task_2" type="radio" name="age" id="have_16">
+        <label for="have_16">16 днів народжень</label>
+
+        <input class="task_2" type="radio" name="age" id="have_18">
+        <label for="have_18">18 днів народжень</label>
+
+        <input class="task_2" type="radio" name="age" id="have_25">
+        <label for="have_25">25 днів народжень</label>
+
+        <input class="task_2" type="radio" name="age" id="have_30">
+        <label for="have_30">30 днів народжень.</label>
+    </p>
+
+
+    <p>
+        Ні, ше буду святкувати
+        <input class="task_2" type="radio" name="age" id="notHave_16">
+        <label for="notHave_16">16-й День народження.</label>
+    </p>
+    <br>
+
+    <select class="task_2" name="city">
+        <option disabled selected>Місто де ви проживаєте</option>
+        <option>Львів</option>
+        <option>Київ</option>
+        <option>Харків</option>
+        <option>Дніпро</option>
+        <option>Одеса</option>
+        <option>Харків</option>
+    </select>
+
+    <br>
+    <input type="submit">
+</form>
+
+<div style="margin-top: 20px">
+    <button id="arrowLeft"><=</button>
+    <button id="arrowRight">=></button>
+    <br>
+    <textarea id="notebook" rows="10" cols="50" style="margin: 10px 0px 10px 0px;"></textarea>
+    <br>
+    <button id="save">save</button>
+</div>
+
+<form id="form_1" style="margin-top: 20px">
+    <label>Прізвище ім'я по-батькові</label>
+    <br>
+    <input type="text" name="fio">
+    <br>
+    <label>Телефон</label>
+    <br>
+    <input type="text" name="phone">
+    <br>
+    <label>Електронна пошта</label>
+    <br>
+    <input type="email" name="mail">
+    <br>
+    <label>Назва фірми</label>
+    <br>
+    <input type="text" name="firm">
+    <br>
+    <label>Відділ</label>
+    <br>
+    <input type="text" name="department">
+    <br>
+    <label>Дань народження</label>
+    <br>
+    <input type="date" name="bDay">
+    <br>
+    <input type="submit" name="submit_f1">
+</form>
+
+
+<div id="content"></div>
+
+<script src="index_1.js"></script>
+</body>
+</html>
