@@ -162,10 +162,13 @@ const usersArray = 'usersArray';
 let userEdit = {};
 const content = document.getElementById('content');
 const form_1 = document.forms.form_1;
-console.log(form_1.submit_f1)
+console.log(form_1.submit_f1);
+
 form_1.submit_f1.onclick = ev => {
+
     // ev.preventDefault();
     let person = { ...userEdit};
+    console.log(person)
 
     for (let i = 0; i < form_1.children.length; i++) {
         const form_1Element = form_1.children[i];
