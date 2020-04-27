@@ -360,7 +360,7 @@
 // });
 
 
-const someValue = 0.4;
+const someValue = 0.5;
 
 function getUp(value) {
     console.log(value)
