@@ -379,7 +379,7 @@ function run(result) {
     return new Promise((resolve) => {
         setTimeout(() => {
             // result.includes('Збираюсь')
-            Math.random() > 1
+            Math.random() > someValue
                 ? resolve('Побігав на стадіоні. Повернувся додому, прийняв душ. Зуби почистив. Випив каву.')
                 : resolve('... Передумав, краще посплю... Недавно ж скінчив працювати...');
         }, 2000);
@@ -392,7 +392,7 @@ function goWork(result) {
             if (result.includes('Побігав')) {
                 resolve("Поїхав на роботу.");
             } else {
-                Math.random() < 1
+                Math.random() > someValue
                     ? resolve("Погано виспався. Кодінг он зе хаус...")
                     : resolve("Поїхав на роботу...");
             }
