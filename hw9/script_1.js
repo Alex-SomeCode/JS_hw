@@ -551,79 +551,149 @@ function goToTheBed(result, cb) {
 // // //     функції доїхати на роботу ви стали в заторі і не попали на роботу. Або йдучи на обід ви забули гаманець і
 // // //   лишились голодні.
 
-getUp('Будильник.')
-    .then(result => {
-        console.log(result);
-        return run();
-    })
-    .then(result => {
-        console.log(result);
-        // if (result.includes('Передумав')) {
-        //     return goWork(result)
-        // } else {
-        //     return goWork(result)
-        // }
-        return goWork(result);
-    })
-    .then(result => {
-        console.log(result);
-        if (result.includes('Погано')) {
-            return coding_In_Home(result)
+// getUp('Будильник.')
+//     .then(result => {
+//         console.log(result);
+//         return run();
+//     })
+//     .then(result => {
+//         console.log(result);
+//         // if (result.includes('Передумав')) {
+//         //     return goWork(result)
+//         // } else {
+//         //     return goWork(result)
+//         // }
+//         return goWork(result);
+//     })
+//     .then(result => {
+//         console.log(result);
+//         if (result.includes('Погано')) {
+//             return coding_In_Home(result)
+//         } else {
+//             return workWayP(result)
+//         }
+//     })
+//     .then(result => {
+//         console.log(result)
+//         if (result.includes('Попав') || result.includes('Приїхав')) {
+//             return atWork(result);
+//         } else {
+//             return working_On_House(result);
+//         }
+//     })
+//     .then(result => {
+//         console.log(result);
+//         if (result.includes('London') || result.includes('Задовбав')) {
+//             return goToTheBed(result);
+//         } else {
+//             return working(result);
+//         }
+//     })
+//     .then(result => {
+//         console.log(result);
+//         return dinner(result);
+//     })
+//     .then(result => {
+//         console.log(result);
+//         return workAfterDinner(result)
+//     })
+//     .then(result => {
+//         console.log(result);
+//         return coffee(result);
+//     })
+//     .then(result => {
+//         return coffee(result);
+//     })
+//     .then(result => {
+//         console.log(result);
+//         return workAfterCoffee(result);
+//     })
+//     .then(result => {
+//         console.log(result)
+//         return goHome(result);
+//     })
+//     .then(result => {
+//         console.log(result);
+//         return study(result);
+//     })
+//     .then(result => {
+//         console.log(result);
+//         return sleep(result);
+//     })
+//     .then(result => {
+//         console.log(result)
+//     })
+//     .catch(reason => console.log(reason))
+//     .finally(() => setTimeout(()=>{
+//         console.log("Ready to the next day")
+//     },2000));
+
+async function someFunction() {
+    try {
+        let someAction = await getUp('Будильник.');
+        console.log(someAction);
+
+        someAction = await run(someAction);
+        console.log(someAction);
+
+        someAction = await goWork(someAction);
+        console.log(someAction);
+
+        if (someAction.includes('Погано')) {
+            someAction = await coding_In_Home(someAction);
         } else {
-            return workWayP(result)
+            someAction = await workWayP(someAction);
         }
-    })
-    .then(result => {
-        console.log(result)
-        if (result.includes('Попав') || result.includes('Приїхав')) {
-            return atWork(result);
+        console.log(someAction);
+
+        if (someAction.includes('Приїхав') || someAction
+            .includes('Попав')) {
+            someAction = await atWork(someAction);
         } else {
-            return working_On_House(result);
+            someAction = await working_On_House(someAction);
         }
-    })
-    .then(result => {
-        console.log(result);
-        if (result.includes('London') || result.includes('Задовбав')) {
-            return goToTheBed(result);
+        console.log(someAction);
+
+        if (someAction.includes('протер') || someAction.includes('їду')) {
+            someAction = await working(someAction);
         } else {
-            return working(result);
+            someAction = await goToTheBed(someAction);
         }
-    })
-    .then(result => {
-        console.log(result);
-        return dinner(result);
-    })
-    .then(result => {
-        console.log(result);
-        return workAfterDinner(result)
-    })
-    .then(result => {
-        console.log(result);
-        return coffee(result);
-    })
-    .then(result => {
-        return coffee(result);
-    })
-    .then(result => {
-        console.log(result);
-        return workAfterCoffee(result);
-    })
-    .then(result => {
-        console.log(result)
-        return goHome(result);
-    })
-    .then(result => {
-        console.log(result);
-        return study(result);
-    })
-    .then(result => {
-        console.log(result);
-        return sleep(result);
-    })
-    .then(result => {
-        console.log(result)
-    })
-    .catch(reason => console.log(reason))
-    .finally(() => setTimeout(()=>{
-        console.log("Ready to the next day")
-    },2000));
+        console.log(someAction);
+
+        if (someAction.includes('Працюю.') || someAction.includes('Запізнився')) {
+            someAction = await dinner(someAction);
+        } else {
+            someAction = await goToTheBed(someAction);
+        }
+        console.log(someAction);
+
+        someAction = await workAfterDinner(someAction);
+        console.log(someAction);
+
+        someAction = await coffee(someAction);
+        console.log(someAction);
+
+        someAction = await workAfterCoffee(someAction);
+        console.log(someAction);
+
+        someAction = await goHome(someAction);
+        console.log(someAction);
+
+        someAction = await study(someAction);
+        console.log(someAction);
+
+        someAction = await sleep(someAction);
+        console.log(someAction);
+
+    } catch (e) {
+        setTimeout(() => {
+            console.log(e);
+        }, 2000);
+    }
+}
+
+someFunction();
+
+
+
