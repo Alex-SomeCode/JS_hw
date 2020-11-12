@@ -12,7 +12,7 @@ for (const element of inputs) {
 
 textArea_1.onblur = function (ev) {
     localStorage.setItem('textArea_1Value', ev.target.value);
-}
+};
 textArea_1.value = localStorage.getItem('textArea_1Value');
 
 
@@ -61,7 +61,7 @@ if (localStorage.getItem('objTask_2')) {
 
 for (const element of task_2) {
     element.onblur = () => {
-        console.log('onblur')
+        console.log('onblur');
         switch (element.name) {
             case 'name':
                 objTask_2.name = element.value;
@@ -107,47 +107,100 @@ let counter = 1;
 save.onclick = (ev) => {
     obj[counter] = notebook.value;
     localStorage.setItem('text', JSON.stringify(obj));
-    counter < 3
-        ? counter++
-        : counter = 1
-}
+    counter < 3 ? counter++ : counter = 1
+    notebook.value = '';
+};
 
+(function () {
+    if (counter <= 1) {
+        left.style.visibility = 'hidden'
+    }
+})();
+
+(function () {
+    // if (JSON.parse(localStorage.getItem('text')) !== null) {
+    //     notebook.value = JSON.parse(localStorage.getItem('text')[counter]);
+    // }
+    console.log(counter);
+    console.log(notebook.value = JSON.parse(localStorage.getItem('text'))[counter]);
+
+})();
 
 left.onclick = () => {
+    console.log(counter);
     right.style.visibility = 'visible';
-    let index;
-    for (let key in JSON.parse(localStorage.getItem('text'))) {
-        if (JSON.parse(localStorage.getItem('text')).hasOwnProperty(key)) {
-            if (JSON.parse(localStorage.getItem('text'))[key] === notebook.value) {
-                index = key;
-            }
-        }
-    }
-    if (index === '1') {
-        left.style.visibility = 'hidden';
-        return;
-    }
-    let value = JSON.parse(localStorage.getItem('text'));
-    notebook.value = value[index - 1]
-}
+    // let index;
+    // for (let key in JSON.parse(localStorage.getItem('text'))) {
+    //     if (JSON.parse(localStorage.getItem('text')).hasOwnProperty(key)) {
+    //         if (JSON.parse(localStorage.getItem('text'))[key] === notebook.value) {
+    //             console.log(JSON.parse(localStorage.getItem('text'))[key]);
+    //             console.log(notebook.value);
+    //             index = key;
+    //         }
+    //     }
+    // }
 
-right.onclick = () => {
-    left.style.visibility = 'visible';
-    let index;
-    for (let key in JSON.parse(localStorage.getItem('text'))) {
-        if (JSON.parse(localStorage.getItem('text')).hasOwnProperty(key)) {
-            if (JSON.parse(localStorage.getItem('text'))[key] === notebook.value) {
-                index = key;
+
+    if (JSON.parse(localStorage.getItem('text')) !== null) {
+        let value = JSON.parse(localStorage.getItem('text'));
+        if (value[counter - 1] !== undefined) {
+            notebook.value = value[counter - 1];
+            counter--;
+            if (counter <= 1) {
+                left.style.visibility = 'hidden'
             }
+            counter = counter <= 1 ? 1 : counter
+        } else {
+            alert('ти щось натикав, але не натиснув кнопку save 3 рази,використай збереження три рази, а потім тикай стрілки');
+            return false;
         }
     }
-    if (index === '3') {
-        right.style.visibility = 'hidden';
-        return;
+
+    if (JSON.parse(localStorage.getItem('text')) === null) {
+        alert('використай збереження три рази a потім тикай стрілки');
+        return false;
     }
-    let value = JSON.parse(localStorage.getItem('text'));
-    notebook.value = value[+index + 1]
-}
+};
+
+// ТРЕБА ДОПРАЦЮВАТИ ЛОГІКУ суть якої полягає у тому, що до натискання кнопки save кнопки button мали атрибут disable
+right.onclick = () => {
+    console.log(counter);
+    // let index;
+    // for (let key in JSON.parse(localStorage.getItem('text'))) {
+    //     if (JSON.parse(localStorage.getItem('text')).hasOwnProperty(key)) {
+    //         if (JSON.parse(localStorage.getItem('text'))[key] === notebook.value) {
+    //             index = key;
+    //         }
+    //     }
+    // }
+    console.log(counter);
+
+    // let value = JSON.parse(localStorage.getItem('text'));
+    //     // notebook.value = value[+index + 1]
+    console.log(JSON.parse(localStorage.getItem('text')));
+    if (JSON.parse(localStorage.getItem('text')) !== null) {
+        let value = JSON.parse(localStorage.getItem('text'));
+        if (value[counter + 1] !== undefined) {
+            notebook.value = value[counter + 1];
+            counter++;
+            if (counter >= 3) {
+                right.style.visibility = 'hidden';
+            }
+            counter = counter > 3 ? 1 : counter;
+            console.log(counter);
+            left.style.visibility = 'visible';
+
+        } else {
+            alert(`У блоці для збереження ${counter + 1} відсутня інформація, використай збереження `);
+            return false;
+        }
+
+    }
+    if (JSON.parse(localStorage.getItem('text')) === null) {
+        alert('використай збереження три рази п потім тикай стрілки');
+        return false;
+    }
+};
 
 
 // - Реализуйте зxаписную книгу, хранящую данные в локальном хранилище.
@@ -165,18 +218,17 @@ const form_1 = document.forms.form_1;
 console.log(form_1.submit_f1);
 
 form_1.submit_f1.onclick = ev => {
-
-    // ev.preventDefault();
-    let person = { ...userEdit};
+    ev.preventDefault();
+    let person = {...userEdit};
     console.log(person)
-
     for (let i = 0; i < form_1.children.length; i++) {
         const form_1Element = form_1.children[i];
         if (form_1Element.name && form_1Element.type !== 'submit') {
+            console.log(form_1Element.type)
             person[form_1Element.name] = form_1Element.value;
         }
     }
-    if(!person.id){
+    if (!person.id) {
         person.id = new Date().getTime()
     }
     console.log(person);
@@ -185,10 +237,15 @@ form_1.submit_f1.onclick = ev => {
 
 function addUser(user) {
     if (localStorage.hasOwnProperty(usersArray)) {
+        // витягує з локального середвища масив з контактми
         const array = JSON.parse(localStorage.getItem(usersArray));
+        // шукає співпадіння id збережного масиву з юзером що редагувався
         const find = array.find(value => value.id === user.id);
+        // є спіпадіння
         if (find) {
+            // створюємо змніну яка отримує значення юзерів ід яких не спападає з надійшовшим юзером
             const filter = array.filter(value => value.id !== user.id);
+            // дадє в масив юзера якого редагували
             filter.push(user);
             localStorage.setItem(usersArray, JSON.stringify(filter));
         } else {
@@ -196,6 +253,7 @@ function addUser(user) {
             localStorage.setItem(usersArray, JSON.stringify(array));
         }
     } else {
+        console.log(user);
         localStorage.setItem(usersArray, JSON.stringify([user]));
     }
 }
@@ -207,7 +265,7 @@ function getUsers() {
         const parseValue = JSON.parse(localStorage.getItem(usersArray));
         for (const element of parseValue) {
             console.log(element);
-        content.appendChild(createDivPerson(element));
+            content.appendChild(createDivPerson(element));
         }
     }
 }
@@ -220,7 +278,7 @@ function createDivPerson(user) {
             const h3 = document.createElement('h3');
             h3.innerText = `${key} : ${user[key]}`;
             div.appendChild(h3);
-            flag=false;
+            flag = false;
         } else {
             const p = document.createElement('p');
             p.innerText = `${key} : ${user[key]}`;
@@ -234,12 +292,12 @@ function createDivPerson(user) {
     b1.innerText = 'Внести зміни';
     b2.innerText = 'Видалити'
 
-    b1.onclick=function(){
+    b1.onclick = function () {
         console.log(user.id);
         editUser(user.id);
     }
 
-    b2.onclick=function(){
+    b2.onclick = function () {
         console.log(user.id);
         delUser(user.id);
     }
@@ -247,25 +305,24 @@ function createDivPerson(user) {
     div.appendChild(b1)
     div.appendChild(b2)
 
- return div;
+    return div;
 }
 
 function delUser(id) {
-    const parse =JSON.parse(localStorage.getItem(usersArray));
-    const filter = parse.filter(user =>user.id!==id);
+    const parse = JSON.parse(localStorage.getItem(usersArray));
+    const filter = parse.filter(user => user.id !== id);
     localStorage.setItem(usersArray, JSON.stringify(filter));
     location.reload();
 }
 
-
-function editUser(id){
-    const parse =JSON.parse(localStorage.getItem(usersArray));
-    const user = parse.find(user =>user.id==id);
+function editUser(id) {
+    const parse = JSON.parse(localStorage.getItem(usersArray));
+    const user = parse.find(user => user.id === id);
     for (let i = 0; i < form_1.children.length; i++) {
         const form_1Element = form_1.children[i];
         if (form_1Element.name && form_1Element.type !== 'submit') {
             for (const key in user) {
-                if (form_1Element.name === key){
+                if (form_1Element.name === key) {
                     form_1Element.value = user[key];
                 }
             }
@@ -273,6 +330,7 @@ function editUser(id){
     }
     userEdit = user;
 }
+
 
 
 

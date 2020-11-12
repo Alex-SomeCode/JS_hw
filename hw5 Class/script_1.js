@@ -39,22 +39,22 @@ function HtmlTags(titleOfTag, actionOfTag, attributesOfTag) {
 }
 
 const aTitle = '<a>';
-const aAction = 'Тег <a> является одним из важных элементов HTML и предназначен для создания ссылок. В зависимости от присутствия атрибутов name или href тег <a> устанавливает ссылку или якорь. Якорем называется закладка внутри страницы, которую можно указать в качестве цели ссылки. При использовании ссылки, которая указывает на якорь, происходит переход к закладке внутри веб-страницы.'
+const aAction = 'Тег <a> является одним из важных элементов HTML и предназначен для создания ссылок. В зависимости от присутствия атрибутов name или href тег <a> устанавливает ссылку или якорь. Якорем называется закладка внутри страницы, которую можно указать в качестве цели ссылки. При использовании ссылки, которая указывает на якорь, происходит переход к закладке внутри веб-страницы.';
 const aAttributes = [
     {titleOfAttr: 'accesskey', actionOfAttr: 'Активация ссылки с помощью комбинации клавиш.'},
     {titleOfAttr: 'coords', actionOfAttr: 'Устанавливает координаты активной области.'},
     {titleOfAttr: 'download', actionOfAttr: 'Предлагает скачать указанный по ссылке файл.'},
-]
+];
 let a = new HtmlTags(aTitle, aAction, aAttributes);
 console.log(a);
 
 
 let divTitle = '<div>';
-let divAction = 'Элемент <div> является блочным элементом и предназначен для выделения фрагмента документа с целью изменения вида содержимого. Как правило, вид блока управляется с помощью стилей. Чтобы не описывать каждый раз стиль внутри тега, можно выделить стиль во внешнюю таблицу стилей, а для тега добавить атрибут class или id с именем селектора.'
+let divAction = 'Элемент <div> является блочным элементом и предназначен для выделения фрагмента документа с целью изменения вида содержимого. Как правило, вид блока управляется с помощью стилей. Чтобы не описывать каждый раз стиль внутри тега, можно выделить стиль во внешнюю таблицу стилей, а для тега добавить атрибут class или id с именем селектора.';
 let divAttributes = [
     {titleOfAttr: "align", actionOfAttr: "Задает выравнивание содержимого тега <div>"},
     {titleOfAttr: "title", actionOfAttr: "Добавляет всплывающую подсказку к содержимому."},
-]
+];
 const div = new HtmlTags(divTitle, divAction, divAttributes);
 console.log(div);
 
@@ -69,7 +69,7 @@ const h1 = new HtmlTags(h1Title, h1Action, h1Attributes);
 console.log(h1);
 
 
-const spanTitle = '<span>'
+const spanTitle = '<span>';
 const spanAction = 'Тег <span> предназначен для определения строчных элементов документа. В отличие от блочных элементов, таких как <table>, <p> или <div>, с помощью тега <span> можно выделить часть информации внутри других тегов и установить для нее свой стиль. Например, внутри абзаца (тега <p>) можно изменить цвет и размер первой буквы, если добавить начальный и конечный тег <span> и определить для него стиль текста. Чтобы не описывать каждый раз стиль внутри тега, можно выделить стиль во внешнюю таблицу стилей, а для тега добавить атрибут class или id с именем селектора.';
 const spanAttributes = [
     {
@@ -92,7 +92,7 @@ const inputAttributes = [
     {
         titleOfAttr: "autocomplete", actionOfAttr: "Включает или отключает автозаполнение/"
     }
-]
+];
 const input = new HtmlTags(inputTitle, inputAction, inputAttributes);
 console.log(input);
 
@@ -108,19 +108,19 @@ const formAttributes = [
         titleOfAttr: "enctype", actionOfAttr: "Способ кодирования данных формы."
     }
 
-]
+];
 const form = new HtmlTags(formTitle, formAction, formAttributes);
 console.log(form);
 
 
 const optionTile = '<option>';
-const optionAction = 'Тег <option> определяет отдельные пункты списка, создаваемого с помощью контейнера <select>. Ширина списка определяется самым широким текстом, указанным в теге <option>, а также может изменяться с помощью стилей. Если планируется отправлять данные списка на сервер, то требуется поместить элемент <select> внутрь формы. Это также необходимо, когда к данным списка идет обращение через скрипты.'
+const optionAction = 'Тег <option> определяет отдельные пункты списка, создаваемого с помощью контейнера <select>. Ширина списка определяется самым широким текстом, указанным в теге <option>, а также может изменяться с помощью стилей. Если планируется отправлять данные списка на сервер, то требуется поместить элемент <select> внутрь формы. Это также необходимо, когда к данным списка идет обращение через скрипты.';
 const optionAttributes = [
     {titleOfAttr: "id", actionOfAttr: "Указывает имя стилевого идентификатора."},
     {titleOfAttr: "dir", actionOfAttr: "Задает направление и отображение текста — слева направо или справа налево."}
-]
+];
 
-const option = new HtmlTags(optionTile, optionAction, optionAttributes)
+const option = new HtmlTags(optionTile, optionAction, optionAttributes);
 console.log(option);
 
 
@@ -261,7 +261,7 @@ let car = {
     }
 
 
-}
+};
 
 car.drive();
 car.info();
@@ -299,7 +299,7 @@ function NewCar(
     this.addDriver = function (driver) {
         this.driver = driver;
     };
-    this.ChangeYear = function (newValue) {
+    this.changeYear = function (newValue) {
         this.yearOfProduction = newValue;
     };
 
@@ -335,7 +335,7 @@ function NewCar(
 const newCar = new NewCar('VIDA', 'ZAZ', '2016', 160,
     1.5,);
 newCar.info();
-newCar.ChangeYear(2020);
+newCar.changeYear(2020);
 newCar.info();
 newCar.addDriver({name: 'Some-2', surname: 'Some-2'});
 newCar.info();
@@ -408,9 +408,9 @@ class Car2 {
 }
 
 
-const someCar = new Car2(2101, 'VAZ', 1970, 140, 1.2)
+const someCar = new Car2(2101, 'VAZ', 1970, 140, 1.2);
 someCar.info();
-someCar.increaseMaxSpeed(30)
+someCar.increaseMaxSpeed(30);
 someCar.info();
 someCar.addDriver({name: 'Some V', surname: 'Some K'});
 someCar.info();
@@ -512,7 +512,7 @@ function CinderellaConstructor(name, age, footSize) {
     this.footSize = footSize;
 }
 
-function prince2(name, age, shoesSize) {
+function Prince_2(name, age, shoesSize) {
     this.name = name;
     this.age = age;
     this.shoesSize = shoesSize || 'null';
@@ -528,5 +528,5 @@ function prince2(name, age, shoesSize) {
 }
 
 
-let princeConstructor = new prince2('Jorge', 30, 37);
+let princeConstructor = new Prince_2('Jorge', 30, 37);
 princeConstructor.findGirl(arrC2);
