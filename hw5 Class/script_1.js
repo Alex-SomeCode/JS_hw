@@ -523,7 +523,7 @@ function Prince_2(name, age, shoesSize) {
         console.log(find);
         find
             ? console.log(`Принц знайшов ${find.name}`)
-            : console.log(`Принц крім туфлі нчого не знайшов `);
+            : console.log(`Принц крім туфлі нікого не знайшов `);
     }
 }
 
