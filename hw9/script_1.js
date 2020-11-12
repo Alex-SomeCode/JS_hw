@@ -688,7 +688,7 @@ async function someFunction() {
 
     } catch (e) {
         setTimeout(() => {
-            console.log(e); // cюди потряпляє значення reject
+            console.log(e); // в дану строку потряпляє значення reject
         }, 2000);
     }
 }
