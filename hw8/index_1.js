@@ -109,6 +109,7 @@ save.onclick = (ev) => {
     localStorage.setItem('text', JSON.stringify(obj));
     counter < 3 ? counter++ : counter = 1
     notebook.value = '';
+    left.style.visibility = 'visible'
 };
 
 (function () {
@@ -122,7 +123,12 @@ save.onclick = (ev) => {
     //     notebook.value = JSON.parse(localStorage.getItem('text')[counter]);
     // }
     console.log(counter);
-    console.log(notebook.value = JSON.parse(localStorage.getItem('text'))[counter]);
+    if (JSON.parse(localStorage.getItem('text')) !== null) {
+        console.log(notebook.value = JSON.parse(localStorage.getItem('text'))[counter]);
+    } else {
+        console.log('пусті блоки');
+        return false;
+    }
 
 })();
 
@@ -274,17 +280,22 @@ function createDivPerson(user) {
     const div = document.createElement('div');
     let flag = true;
     for (const key in user) {
-        if (flag) {
-            const h3 = document.createElement('h3');
-            h3.innerText = `${key} : ${user[key]}`;
-            div.appendChild(h3);
-            flag = false;
-        } else {
-            const p = document.createElement('p');
-            p.innerText = `${key} : ${user[key]}`;
-            div.appendChild(p);
+        if (user.hasOwnProperty(key)) {
+
+            if (flag) {
+                const h3 = document.createElement('h3');
+                h3.innerText = `${key} : ${user[key]}`;
+                div.appendChild(h3);
+                flag = false;
+            } else {
+                const p = document.createElement('p');
+                p.innerText = `${key} : ${user[key]}`;
+                div.appendChild(p);
+            }
         }
     }
+
+
     div.style = 'width: 300px; border: green 1px solid; float: left';
     const b1 = document.createElement('button');
     const b2 = document.createElement('button');
@@ -322,8 +333,10 @@ function editUser(id) {
         const form_1Element = form_1.children[i];
         if (form_1Element.name && form_1Element.type !== 'submit') {
             for (const key in user) {
-                if (form_1Element.name === key) {
-                    form_1Element.value = user[key];
+                if (user.hasOwnProperty(key)) {
+                    if (form_1Element.name === key) {
+                        form_1Element.value = user[key];
+                    }
                 }
             }
         }
